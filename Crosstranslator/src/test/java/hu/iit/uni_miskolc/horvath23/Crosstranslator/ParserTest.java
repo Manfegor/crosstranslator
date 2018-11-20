@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import hu.iit.uni_miskolc.horvath23.Crosstranslator.parser.Parser;
+import java_cup.runtime.ComplexSymbolFactory;
 import hu.iit.uni_miskolc.horvath23.Crosstranslator.lexer.Scanner;
 
 /**
@@ -44,6 +45,52 @@ public class ParserTest extends TestCase {
     		System.out.println(exception);
     		fail("Unexpected exception in the test!");
     	}
+    }
+    
+    public void textEmptyClass()
+    {
+    	StringReader reader = new StringReader("Crete OsztalyNev");
+    	Scanner scanner = new Scanner(reader);
+    	Parser parser = new Parser(scanner, new ComplexSymbolFactory());
+    	try {
+			parser.parse();
+		} 
+    	catch (Exception e) {
+			System.out.println(e);
+    		fail("Unexpected exception in the test!");
+		}
+    }
+    
+    public void textSingleMember()
+    {
+    	StringReader reader = new StringReader("Create osztNev\n" + 
+    			"Int name = 5\n" + 
+    			"End");
+    	Scanner scanner = new Scanner(reader);
+    	Parser parser = new Parser(scanner, new ComplexSymbolFactory());
+    	try {
+			parser.parse();
+		} 
+    	catch (Exception e) {
+			System.out.println(e);
+    		fail("Unexpected exception in the test!");
+		}
+    }
+    
+    public void textSingleMethod()
+    {
+    	StringReader reader = new StringReader("Funct name(Int a)\n" + 
+    			"Int b = a\n" + 
+    			"End");
+    	Scanner scanner = new Scanner(reader);
+    	Parser parser = new Parser(scanner, new ComplexSymbolFactory());
+    	try {
+			parser.parse();
+		} 
+    	catch (Exception e) {
+			System.out.println(e);
+    		fail("Unexpected exception in the test!");
+		}
     }
     
 	// TODO: Test empty class!

@@ -116,6 +116,7 @@ SingleCharacter = [^\r\n\'\\]
 <YYINITIAL> {
 
   /* keywords */
+  "Int"                          { return symbol(INT); }
   "Create"                       { return symbol(CREATE); }
   "End"                          { return symbol(END); }
   "@"                            { return symbol(MEMBER_TAG); }

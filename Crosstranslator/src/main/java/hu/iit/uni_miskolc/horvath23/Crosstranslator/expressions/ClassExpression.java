@@ -9,14 +9,12 @@ import java.util.List;
 public class ClassExpression extends Expression {
 	
 	private String name;
-	private List<VarExpression> members;
-	private List<FunctExpression> methods;
+	private Block block;
 	
-	public ClassExpression(String name) {
+	public ClassExpression(String name, Block block) {
 		super();
 		this.name = name;
-		this.members = new ArrayList<VarExpression>();
-		this.methods = new ArrayList<FunctExpression>();
+		this.block = block;
 	}
 
 	public String getName() {
@@ -27,43 +25,13 @@ public class ClassExpression extends Expression {
 		this.name = name;
 	}
 
-	public List<VarExpression> getMembers() {
-		return members;
+	public Block getBlock() {
+		return block;
 	}
 
-	public void setMembers(List<VarExpression> members) {
-		this.members = members;
+	public void setBlock(Block block) {
+		this.block = block;
 	}
 
-	public List<FunctExpression> getMethods() {
-		return methods;
-	}
-
-	public void setMethods(List<FunctExpression> methods) {
-		this.methods = methods;
-	}
 	
-	public void addMember(VarExpression member) {
-		this.members.add(member);
-	}
-	
-	public void removeMember(VarExpression member) {
-		this.members.remove(member);
-	}
-	
-	public void setMember(int place, VarExpression member) {
-		this.members.set(place, member);
-	}
-	
-	public void addFunction(FunctExpression method) {
-		this.methods.add(method);
-	}
-	
-	public void removeFunction(FunctExpression method) {
-		this.methods.remove(method);
-	}
-	
-	public void setFunction(int place, FunctExpression method) {
-		this.methods.set(place, method);
-	}
 }

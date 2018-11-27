@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import hu.iit.uni_miskolc.horvath23.Crosstranslator.parser.Parser;
+import hu.iit.uni_miskolc.horvath23.Crosstranslator.parser.sym;
 import java_cup.runtime.ComplexSymbolFactory;
 import hu.iit.uni_miskolc.horvath23.Crosstranslator.lexer.Scanner;
 

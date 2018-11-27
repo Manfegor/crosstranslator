@@ -34,4 +34,11 @@ public class Block extends Expression {
 		// TODO: Check the place argument!
 		this.members.set(place, member);
 	}
+
+	@Override
+	public String toString() {
+		return "Block [members=" + members + ", getMembers()=" + getMembers() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}	
+	
 }

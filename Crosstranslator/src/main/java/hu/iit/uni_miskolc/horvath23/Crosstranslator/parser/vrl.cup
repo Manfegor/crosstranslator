@@ -47,7 +47,7 @@ clslist  ::=  cls:c clslist:cl                           {: cl.add(c); RESULT = 
     | /* empty */                                  {: RESULT = new LinkedList<ClassExpression>(); :}
     ;
     
-cls ::= CREATE IDENTIFIER:i block END			{: RESULT = new ClassExpression(i.toString()); :}
+cls ::= CREATE IDENTIFIER:i block:b END			{: RESULT = new ClassExpression(i.toString(), b); :}
 	;
 	
 block ::=	expr:e				{: Block b = new Block(); b.addMember(e); RESULT = b; :}

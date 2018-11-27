@@ -429,13 +429,11 @@ class CUP$Parser$actions {
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 3: // clslist ::= 
-          {
-        	  // BUG: Class list parameter problem!
-              List<ClassExpression> RESULT = null;
-              RESULT = new LinkedList<ClassExpression>();
-              CUP$Parser$result = parser.getSymbolFactory().newSymbol("clslist", 1, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
-              //CUP$Parser$result = null;
-          }
+            {
+              List<ClassExpression> RESULT =null;
+		 RESULT = new LinkedList<ClassExpression>(); 
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("clslist",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
@@ -445,7 +443,10 @@ class CUP$Parser$actions {
 		int ileft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).right;
 		java.lang.String i = (java.lang.String)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
-		 RESULT = new ClassExpression(i.toString()); 
+		int bleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		Block b = (Block)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		 RESULT = new ClassExpression(i.toString(), b); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("cls",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

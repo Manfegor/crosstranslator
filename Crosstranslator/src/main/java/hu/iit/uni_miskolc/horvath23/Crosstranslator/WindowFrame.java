@@ -1,6 +1,9 @@
 package hu.iit.uni_miskolc.horvath23.Crosstranslator;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -8,6 +11,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import hu.iit.uni_miskolc.horvath23.Crosstranslator.expressions.Block;
+import hu.iit.uni_miskolc.horvath23.Crosstranslator.expressions.ClassExpression;
+import hu.iit.uni_miskolc.horvath23.Crosstranslator.expressions.Expression;
+import hu.iit.uni_miskolc.horvath23.Crosstranslator.expressions.Program;
+import java_cup.runtime.Symbol;
 
 public class WindowFrame extends JFrame {
 
@@ -27,12 +36,35 @@ public class WindowFrame extends JFrame {
 		toPhp = new JButton("PHP");
 		toPhp.addActionListener((e) -> {
 			inputText = inputMessagePanel.getText();
-			outputMessagePanel.setText(listener.scanText(inputText, "PHP").toString());
+			Program p = listener.scanText(inputText, "PHP");
+			List<ClassExpression> classList = p.getValues();
+			for (ClassExpression classExpression : classList) {
+				Block block = classExpression.getBlock();
+				List<Expression> exprList = block.getMembers();
+				outputMessagePanel.setText("Create " + classExpression.getName() + "\n");
+				outputMessagePanel.append(block.toString());
+				/*for (Expression expr : exprList) {
+					outputMessagePanel.setText(expr.getClass()+ ";\n");
+				}*/
+				outputMessagePanel.append("End");
+			}
+			
 		});
 		toJava = new JButton("Java");
 		toJava.addActionListener((e) -> {
 			inputText = inputMessagePanel.getText();
-			outputMessagePanel.setText(listener.scanText(inputText, "Java").toString());
+			Program p = listener.scanText(inputText, "PHP");
+			List<ClassExpression> classList = p.getValues();
+			for (ClassExpression classExpression : classList) {
+				Block block = classExpression.getBlock();
+				List<Expression> exprList = block.getMembers();
+				outputMessagePanel.setText("class " + classExpression.getName() + " {\n\t");
+				outputMessagePanel.append(block.toString());
+				/*for (Expression expr : exprList) {
+					outputMessagePanel.setText(expr.getClass()+ ";\n");
+				}*/
+				outputMessagePanel.append("}");
+			}
 		});
 		toJavaScript = new JButton("JavaScript");
 		toJavaScript.addActionListener((e) -> {
